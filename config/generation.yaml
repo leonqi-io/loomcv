@@ -1,0 +1,37 @@
+# Generation-side parameters. Read by `loomcv/state.py` `load_generation_config`
+# (`extra="forbid"`: a key without a reader is not created, and a stale key fails loudly).
+#
+# Kept apart from retrieval.yaml on purpose: `pipeline match` echoes retrieval.yaml into every
+# payload, so a generation key there would change the output of a stage that never reads it.
+#
+# Nothing here rewrites text: the generation side grades, selects, renders and reports; it never
+# rewrites a bullet, a Skills item or a header. Five keys, five readers.
+
+# Default parent directory of `pipeline draft`'s output: <output_dir>/<stem of the match JSON>/.
+# Resolved against the working directory; gitignored. `--out-dir` overrides the whole path.
+# Reader: `pipeline draft`.
+output_dir: 04_applications
+
+# The Jinja template `render_resume` fills to write `tailored_resume.md` (section order, headings,
+# date line, bullet line; layout only). A relative path is looked up first among the package's
+# shipped resources (`loomcv/resources/`), else against the working directory; an absolute path
+# is used as is — so your own template is an absolute path or one relative to where you run
+# `pipeline`. Reader: `pipeline draft` -> `loomcv/draft/render.py` `render_resume`.
+resume_template: templates/resume_default.md
+
+# pandoc's own defaults file for Markdown -> typst (layout variables: paper, margin, font).
+# Resolved like `resume_template`: the shipped resource first, else the working directory; an
+# absolute path as is. Reader: `pipeline finalize` -> `loomcv/finalize/export.py` `export_typ`.
+pandoc_defaults: pandoc_resume.yaml
+
+# Pages allowed in the exported PDF. `pipeline finalize --page-limit N` overrides it for one run;
+# over the limit is a finding (exit 5, all files kept), never an error. Reader:
+# `pipeline finalize` (page check).
+page_limit: 2
+
+# The per-bullet length budget the profile page's drafting call asks for ("at most N
+# characters"); a longer proposal comes back with a warning, nothing is cut. About two and a
+# half lines at the default layout (10 pt, 0.65 in margins, ~95 characters a line); 200
+# clipped an already STAR-shaped bullet.
+# Reader: `pipeline ui` -> `loomcv/complete/rewrite.py` `draft_bullet`.
+bullet_max_chars: 250

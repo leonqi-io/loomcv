@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# macOS
+.DS_Store
+
+# Your settings and keys: written by start.command, never commit them
+.env
+config/models.local*.yaml
+!config/models.local.example.yaml
+
+# Downloaded and generated on your machine
+.models/
+.gradio/
+02_database/
+04_applications/

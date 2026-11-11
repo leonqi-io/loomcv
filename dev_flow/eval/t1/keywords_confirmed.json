@@ -1,0 +1,404 @@
+{
+  "_note": "T1 confirmed keywords. Derived by these rulings: (1) P8b3 'Tokenization' removed (supported by no line of the vault); (2) every item of a project's Tech line is inherited by every bullet of that project, skipped when the bullet already carries it (case-insensitive, 'REST' counts as present in 'REST APIs'); (3) Domain lines are not inherited; (4) no further edits. Ruled as the persona; the three tech-line pairs the answer key marked false (P10b3/Prometheus, P4b3/Storybook, P6b3/Pydantic) keep the inherited keyword and those false labels are dropped from the answer key (no traps on the keyword path).",
+  "P1b1": [
+    "Headless CMS",
+    "CMS Migration",
+    "Next.js",
+    "Front-End Architecture",
+    "Web Performance Optimization",
+    "TypeScript",
+    "Node.js",
+    "Strapi",
+    "PostgreSQL"
+  ],
+  "P1b2": [
+    "Web Performance Optimization",
+    "Core Web Vitals",
+    "Server-Side Rendering",
+    "Edge Computing",
+    "Image Optimization",
+    "Font Subsetting",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "Strapi",
+    "PostgreSQL"
+  ],
+  "P1b3": [
+    "Content Delivery API",
+    "TypeScript",
+    "Node.js",
+    "API Development",
+    "Caching Headers",
+    "Database Pagination",
+    "Next.js",
+    "Strapi",
+    "PostgreSQL"
+  ],
+  "P1b4": [
+    "Migration Planning",
+    "Rollout Management",
+    "Technical Program Management",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "Strapi",
+    "PostgreSQL"
+  ],
+  "P2b1": [
+    "Single Sign-On",
+    "OpenID Connect",
+    "OAuth 2.0",
+    "PKCE",
+    "Token Authentication",
+    "Identity Management",
+    "Node.js",
+    "Redis"
+  ],
+  "P2b2": [
+    "Session Management",
+    "Access Tokens",
+    "Session Revocation",
+    "Vulnerability Remediation",
+    "Application Security",
+    "OAuth 2.0",
+    "OpenID Connect",
+    "Node.js",
+    "Redis"
+  ],
+  "P2b3": [
+    "Web Accessibility",
+    "WCAG",
+    "Form Design",
+    "Assistive Technology Testing",
+    "OAuth 2.0",
+    "OpenID Connect",
+    "Node.js",
+    "Redis"
+  ],
+  "P3b1": [
+    "Payment Integration",
+    "REST APIs",
+    "Webhooks",
+    "Idempotency",
+    "Message Queues",
+    "Billing Systems",
+    "Node.js",
+    "TypeScript",
+    "PostgreSQL"
+  ],
+  "P3b2": [
+    "Entitlement Service",
+    "Authorization Systems",
+    "Paywall Architecture",
+    "Low-Latency Systems",
+    "Backend Architecture",
+    "Node.js",
+    "TypeScript",
+    "REST",
+    "Webhooks",
+    "PostgreSQL"
+  ],
+  "P3b3": [
+    "Contract Testing",
+    "Integration Testing",
+    "Sandbox Testing",
+    "Continuous Integration",
+    "Node.js",
+    "TypeScript",
+    "REST",
+    "Webhooks",
+    "PostgreSQL"
+  ],
+  "P4b1": [
+    "Design Systems",
+    "React",
+    "Component Libraries",
+    "Front-End Development",
+    "Package Publishing",
+    "TypeScript",
+    "Storybook",
+    "CSS Modules"
+  ],
+  "P4b2": [
+    "Automated Accessibility Testing",
+    "Web Accessibility",
+    "Design Systems",
+    "Defect Remediation",
+    "React",
+    "TypeScript",
+    "Storybook",
+    "CSS Modules"
+  ],
+  "P4b3": [
+    "Technical Documentation",
+    "Design System Adoption",
+    "Developer Enablement",
+    "React",
+    "TypeScript",
+    "Storybook",
+    "CSS Modules"
+  ],
+  "P5b1": [
+    "Search Engine Architecture",
+    "Elasticsearch",
+    "Site Search",
+    "Information Retrieval",
+    "Full-Text Search",
+    "Node.js",
+    "TypeScript"
+  ],
+  "P5b2": [
+    "Search Indexing",
+    "Data Pipelines",
+    "Event Streaming",
+    "Elasticsearch",
+    "Content Ingestion",
+    "Node.js",
+    "TypeScript"
+  ],
+  "P6b1": [
+    "LLM Integration",
+    "FastAPI",
+    "Python",
+    "API Development",
+    "Prompt Engineering",
+    "Artificial Intelligence",
+    "Pydantic",
+    "LLM API"
+  ],
+  "P6b2": [
+    "Model Evaluation",
+    "Prompt Evaluation",
+    "Error Analysis",
+    "Quality Assurance",
+    "Python",
+    "FastAPI",
+    "Pydantic",
+    "LLM API"
+  ],
+  "P6b3": [
+    "Feasibility Analysis",
+    "Cost Analysis",
+    "Architecture Evaluation",
+    "Python",
+    "FastAPI",
+    "Pydantic",
+    "LLM API"
+  ],
+  "P7b1": [
+    "Server-Side Rendering",
+    "React",
+    "E-Commerce Storefront",
+    "Front-End Architecture",
+    "Web Performance Optimization",
+    "Node.js",
+    "REST",
+    "Docker"
+  ],
+  "P7b2": [
+    "REST APIs",
+    "API Architecture",
+    "Technical Evaluation",
+    "Architecture Decision Records",
+    "React",
+    "Node.js",
+    "Docker"
+  ],
+  "P7b3": [
+    "A/B Testing",
+    "Conversion Rate Optimization",
+    "Checkout Systems",
+    "Experimentation Platforms",
+    "React",
+    "Node.js",
+    "REST",
+    "Docker"
+  ],
+  "P8b1": [
+    "Payment Gateway Integration",
+    "Checkout API",
+    "REST APIs",
+    "Tax Calculation",
+    "Financial Reconciliation",
+    "Node.js",
+    "Webhooks",
+    "MySQL"
+  ],
+  "P8b2": [
+    "Circuit Breaker Pattern",
+    "Fault Tolerance",
+    "System Resilience",
+    "Graceful Degradation",
+    "Payment Systems",
+    "Node.js",
+    "REST",
+    "Webhooks",
+    "MySQL"
+  ],
+  "P8b3": [
+    "Payment Security",
+    "Hosted Fields",
+    "PCI Compliance",
+    "Security Compliance",
+    "Node.js",
+    "REST",
+    "Webhooks",
+    "MySQL"
+  ],
+  "P9b1": [
+    "Event-Driven Architecture",
+    "RabbitMQ",
+    "Order Processing",
+    "Message Brokers",
+    "Asynchronous Processing",
+    "Node.js",
+    "Docker"
+  ],
+  "P9b2": [
+    "Dead-Letter Queues",
+    "Message Replay",
+    "Error Handling",
+    "Message Brokers",
+    "Site Reliability Engineering",
+    "RabbitMQ",
+    "Node.js",
+    "Docker"
+  ],
+  "P10b1": [
+    "Distributed Tracing",
+    "OpenTelemetry",
+    "Grafana",
+    "Application Performance Monitoring",
+    "Observability Dashboards",
+    "Prometheus"
+  ],
+  "P10b2": [
+    "Service-Level Objectives",
+    "Alerting Systems",
+    "Site Reliability Engineering",
+    "Alert Fatigue Reduction",
+    "Prometheus",
+    "Grafana",
+    "OpenTelemetry"
+  ],
+  "P10b3": [
+    "Incident Management",
+    "On-Call Rotation",
+    "Post-Incident Review",
+    "Site Reliability Engineering",
+    "Prometheus",
+    "Grafana",
+    "OpenTelemetry"
+  ],
+  "P11b1": [
+    "CI/CD Pipelines",
+    "Preview Environments",
+    "Deployment Automation",
+    "DevOps",
+    "Build Automation",
+    "GitHub Actions",
+    "Docker",
+    "Terraform"
+  ],
+  "P11b2": [
+    "Infrastructure as Code",
+    "Terraform",
+    "Environment Provisioning",
+    "Cloud Infrastructure",
+    "GitHub Actions",
+    "Docker"
+  ],
+  "P11b3": [
+    "Scaffolding Tools",
+    "Developer Tooling",
+    "Command-Line Interfaces",
+    "Project Templates",
+    "GitHub Actions",
+    "Docker",
+    "Terraform"
+  ],
+  "P12b1": [
+    "End-to-End Testing",
+    "Cypress",
+    "Test Automation",
+    "Regression Testing",
+    "Continuous Integration",
+    "JavaScript"
+  ],
+  "P12b2": [
+    "Test Flakiness Remediation",
+    "Test Isolation",
+    "Test Automation",
+    "Quality Engineering",
+    "Cypress",
+    "JavaScript"
+  ],
+  "P13b1": [
+    "Front-End Development",
+    "Offline Synchronization",
+    "Offline-First Architecture",
+    "Educational Technology",
+    "Angular",
+    "TypeScript"
+  ],
+  "P13b2": [
+    "Web Accessibility",
+    "Closed Captioning",
+    "Keyboard Navigation",
+    "Accessibility Auditing",
+    "Angular",
+    "TypeScript"
+  ],
+  "P14b1": [
+    "REST APIs",
+    "Python",
+    "Django",
+    "OpenAPI",
+    "API Design",
+    "PostgreSQL"
+  ],
+  "P14b2": [
+    "Database Migration",
+    "PostgreSQL",
+    "Schema Migration",
+    "Dual-Write Pattern",
+    "Data Integrity",
+    "Python",
+    "Django",
+    "REST"
+  ],
+  "P14b3": [
+    "API Partner Onboarding",
+    "Developer Experience",
+    "API Sandbox",
+    "Integration Testing",
+    "Python",
+    "Django",
+    "PostgreSQL",
+    "REST"
+  ],
+  "P15b1": [
+    "Bug Triage",
+    "Defect Management",
+    "Quality Assurance",
+    "Backlog Refinement",
+    "Sentry",
+    "JavaScript"
+  ],
+  "P15b2": [
+    "Engineering Mentorship",
+    "Code Reviews",
+    "Release Management",
+    "Sentry",
+    "JavaScript"
+  ],
+  "P15b3": [
+    "Root Cause Analysis",
+    "Race Condition Debugging",
+    "Script Loading Optimization",
+    "Front-End Debugging",
+    "Sentry",
+    "JavaScript"
+  ]
+}

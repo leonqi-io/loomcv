@@ -1,0 +1,47 @@
+// LoomCV résumé layout (pandoc typst template).
+// Named by `template:` in `pandoc_resume.yaml`; the variables come from that file. Layout only:
+// one rule per heading level and none keyed on a heading's position or text, so a résumé
+// template that reorders the sections keeps its look. Single column, no
+// table, no icon, no colour, no bundled font. Replace this file (or the defaults file's
+// `template:`) to change the look.
+
+#let horizontalrule = line(length: 100%, stroke: 0.4pt)
+
+$if(highlighting-definitions)$
+$highlighting-definitions$
+
+$endif$
+$if(smart)$
+$else$
+#set smartquote(enabled: false)
+
+$endif$
+#set page(
+  paper: "$papersize$",
+  margin: ($for(margin/pairs)$$margin.key$: $margin.value$,$endfor$),
+  numbering: none,
+)
+#set text(font: ("$mainfont$",), size: $fontsize$)
+#set par(leading: $linestretch$ * 0.6em, spacing: 0.65em)
+#set list(indent: 0.4em, spacing: 0.45em)
+
+// The name.
+#show heading.where(level: 1): it => block(below: 0.6em)[
+  #text(size: 1.9em, weight: "bold", it.body)
+]
+// A section title with a thin full-width rule under it.
+#show heading.where(level: 2): it => block(above: 1.1em, below: 0.55em)[
+  #text(size: 1.12em, weight: "bold", it.body)
+  #v(-0.55em)
+  #line(length: 100%, stroke: 0.5pt)
+]
+// A job heading.
+#show heading.where(level: 3): it => block(above: 0.9em, below: 0.35em)[
+  #text(size: 1em, weight: "bold", it.body)
+]
+
+$for(header-includes)$
+$header-includes$
+
+$endfor$
+$body$

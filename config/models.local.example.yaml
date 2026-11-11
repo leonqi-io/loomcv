@@ -1,0 +1,49 @@
+# LoomCV model settings — template.
+#
+# You do not need to open this file: start.command copies it to
+# config/models.local.yaml and fills in the two REPLACE_WITH_* values from your
+# answers. Edit the copy by hand only if you want something the launcher does not ask.
+#
+# Addresses and keys are not stored here. They are read from the environment
+# variables named below, which start.command keeps in the file .env.
+
+providers:
+  # One OpenAI-compatible endpoint: a model server on your machine or a hosted provider.
+  main:
+    adapter: openai_compatible
+    base_url_env: LOOMCV_BASE_URL       # for example http://localhost:11434/v1
+    api_key_env: LOOMCV_API_KEY         # may be empty when the server needs no key
+
+# The four model calls. All four share one model id through the YAML anchor
+# (&model defines it on the first line, *model reuses it).
+#   parse_jd  reads a job posting
+#   coverage  grades what your profile covers
+#   ingest    reads your résumé and suggests search keywords
+#   rewrite   drafts a stronger bullet when you ask for one
+# timeout_s: seconds to wait for one reply. seed: sent with the request so repeated
+# runs vary less; delete it if your provider rejects it.
+nodes:
+  parse_jd: { provider: main, model: &model "REPLACE_WITH_MODEL_ID", temperature: 0, timeout_s: 900 }
+  coverage: { provider: main, model: *model, temperature: 0, timeout_s: 900, seed: 7 }
+  ingest:   { provider: main, model: *model, temperature: 0, timeout_s: 900, seed: 7 }
+  rewrite:  { provider: main, model: *model, temperature: 0.7, timeout_s: 900 }
+
+# Embeddings also go through an OpenAI-compatible endpoint. It has its own address and
+# key variables, so it can be a different server from the one above (many hosted
+# providers offer no embeddings API). start.command sets both to the same server
+# unless you tell it otherwise.
+# Changing `model` here after you have saved a profile requires rebuilding the index
+# (README, "Advanced").
+embedding:
+  adapter: openai_compatible
+  model: "REPLACE_WITH_EMBEDDING_MODEL_ID"   # for example bge-m3
+  base_url_env: LOOMCV_EMBED_BASE_URL
+  api_key_env: LOOMCV_EMBED_API_KEY
+  vector_space_version: 1
+
+# The ranking model. It always runs on your machine (README, "Requirements"):
+# downloaded on the first build, kept in the .models folder inside the LoomCV folder.
+reranker:
+  adapter: sentence_transformers
+  model: BAAI/bge-reranker-v2-m3
+  base_url_env: null

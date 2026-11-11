@@ -1,0 +1,53 @@
+# Provider-agnostic model routing.
+# LangGraph's role is orchestration only; it never selects or wraps a provider.
+# No provider, model, temperature, or endpoint may be hardcoded in Python — every node
+# reads its routing from this file at runtime.
+
+providers:
+  # anthropic/openai are documented examples only — not referenced by any node below.
+  anthropic:
+    adapter: anthropic
+    api_key_env: ANTHROPIC_API_KEY
+  openai:
+    adapter: openai
+    api_key_env: OPENAI_API_KEY
+
+  # local_production/local_eval are provider-agnostic local-runtime example slots.
+  # adapter: openai_compatible is the only supported local integration boundary — no
+  # specific local server (Ollama, LM Studio, vLLM, llama.cpp, etc.) is chosen or required.
+  local_production:
+    adapter: openai_compatible
+    api_key_env: LOCAL_PRODUCTION_API_KEY        # optional; omit if the server needs no auth
+    base_url_env: LOCAL_PRODUCTION_BASE_URL
+  local_eval:
+    adapter: openai_compatible
+    api_key_env: LOCAL_EVAL_API_KEY              # optional; omit if the server needs no auth
+    base_url_env: LOCAL_EVAL_BASE_URL
+
+# Per-node generation routing. `provider` references a key in `providers` above.
+# `model` values below are explicit placeholders — no real local model ID, runtime, or
+# endpoint has been chosen or locked yet; replace them when that decision is made.
+# Optional per-node keys (openai_compatible adapter): `timeout_s` — seconds the adapter waits for
+# one reply (> 0; a timeout fails the call, no retry); `seed` — integer sent as the request's `seed`
+# (not set in this file; set it in a local override when measuring run-to-run stability).
+# A node exists only while something reads it; one returns with the code that adds its reader.
+# `rewrite` = the profile page's drafting call (reader `loomcv/ui/app.py` -> `loomcv/complete/rewrite.py`); its temperature is a documented example — set yours in the local override; regeneration varies by input (the earlier proposals) at any value.
+nodes:
+  parse_jd:     { provider: local_eval,       model: REPLACE_WITH_LOCAL_EVAL_MODEL_ID,       temperature: 0,   timeout_s: 900 }
+  coverage:     { provider: local_eval,       model: REPLACE_WITH_LOCAL_EVAL_MODEL_ID,       temperature: 0,   timeout_s: 900 }
+  ingest:       { provider: local_eval,       model: REPLACE_WITH_LOCAL_EVAL_MODEL_ID,       temperature: 0,   timeout_s: 900 }
+  rewrite:      { provider: local_eval,       model: REPLACE_WITH_LOCAL_EVAL_MODEL_ID,       temperature: 0.7, timeout_s: 900 }
+
+# Embedding configuration is independent from the generation routing above.
+# Changing the model or vector_space_version invalidates existing vectors and needs a full re-index.
+embedding:
+  adapter: sentence_transformers        # sentence_transformers | openai_compatible
+  model: BAAI/bge-m3                    # documented example default — not locked, swappable via config
+  base_url_env: null                    # only used when adapter: openai_compatible
+  vector_space_version: 1               # bump whenever model/adapter/normalization changes
+
+# Cross-encoder reranker. Independent from generation routing and from embedding.
+reranker:
+  adapter: sentence_transformers       # sentence_transformers | http_rerank
+  model: BAAI/bge-reranker-v2-m3       # documented example default — not locked, swappable via config
+  base_url_env: null                   # only used when adapter: http_rerank (Cohere/Jina/TEI-style /rerank)

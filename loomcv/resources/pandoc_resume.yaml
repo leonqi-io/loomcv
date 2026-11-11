@@ -1,0 +1,20 @@
+# pandoc defaults for `pipeline finalize`: Markdown -> typst source.
+# Layout only; nothing LoomCV reads. Single column, no table, no icon. No engine key: typst-py
+# compiles the `.typ` this file produces.
+to: typst
+standalone: true
+# The layout is LoomCV's own typst template, not pandoc's default.
+# `${.}` is the directory of this file, so the template resolves from any working directory
+# and from a wheel install.
+template: ${.}/templates/resume.typst
+variables:
+  papersize: us-letter
+  # 10pt / 0.65in so a five-item contact line stays on one line (10.5pt /
+  # 0.7in broke a 107-character line inside its last item)
+  margin:
+    x: 0.65in
+    y: 0.65in
+  fontsize: 10pt
+  mainfont: Helvetica Neue # macOS system font; elsewhere typst falls back to an embedded font + a warning line
+  linestretch: 1.05
+  # no page numbers: templates/resume.typst sets `numbering: none`

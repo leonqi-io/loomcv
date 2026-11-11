@@ -1,0 +1,19 @@
+# Retrieval tuning parameters (hybrid vector/BM25 ranking over structured evidence).
+# Retrieval runs in three stages:
+#   1 line funnel — per requirement line (must + responsibilities + nice), every bullet is ranked by
+#                   raw cosine over its text embedding and by BM25 over its keywords + text, fused with
+#                   unweighted Reciprocal Rank Fusion; the line's top `top_k` go to the
+#                   cross-encoder (models.yaml `reranker:`), which reads `Keywords: …. <text>` and
+#                   orders them. Nothing is shared across lines.
+#   2 coverage    — one LLM call per JD (models.yaml `nodes.coverage`) reads the requirement lines and
+#                   the index's keyword list only and grades every line exact / adjacent / none; the
+#                   answer is stored on the profile and replayed. gaps = the must lines graded none.
+#   3 merge       — phase 1: every must line places its first carrier (rule D order: overlap → reranker
+#                   rank → RRF position), no cap; phase 2: responsibilities → nice → second rounds fill
+#                   `total_slots` under per-job caps derived from `recency_shares` (largest remainder).
+#                   No score, no global cut.
+# Nothing is thresholded: no score decides evidence or a gap.
+top_k: 12   # per-line reranker budget: each line's top 12 by RRF are reranked (untuned)
+rrf_k: 60   # RRF constant; literature default, not tuned before an eval set exists
+total_slots: 14   # the résumé's length in bullets; provisional
+recency_shares: [3, 2, 1]   # per-job shares by job_order, last value repeats; provisional
